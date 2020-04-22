@@ -1,6 +1,9 @@
 # CovidSim: An agent based simulator for COVID-19 testing and policy interventions
 
-**Authors: Aditya Gopalan and Himanshu Tyagi, Indian Insitute of Science**
+**Contributors** 
+
+- Aditya Gopalan (Indian Insitute of Science)
+- Himanshu Tyagi (Indian Insitute of Science)
 
 
 This library provides an agent based simulation for COVID-19 evolution in a city. The city is divided into various localities
