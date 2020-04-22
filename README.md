@@ -1,11 +1,5 @@
 # CovidSim: An agent based simulator for COVID-19 testing and policy interventions
 
-**Contributors** 
-
-- Aditya Gopalan (Indian Insitute of Science)
-- Himanshu Tyagi (Indian Insitute of Science)
-
-
 This library provides an agent based simulation for COVID-19 evolution in a city. The city is divided into various localities
 and agents are distributed across localities in proportion to population densities. Each agent has a COVID state which evolves according to an SEIR model. There is also another Flu state corresponding to a flu with similar symptoms as COVID-19 which evolves according to an SI model. In addition, agents interact with other agents in their neighborhood and across localities. When an agent in COVID state S meets another agent in  COVID state I, its COVID state updates to I with some probability, thereby infecting the former agent. In the current version, the interaction across localities is based a single OD matrix for traffic flow across the city. 
 
@@ -83,4 +77,7 @@ That's all you need. ENJOY!
 
 Ah, one more thing. If you have queries, feel free to **contact us** at {aditya,htyagi}@iisc.ac.in.
 
+**Contributors** 
 
+- Aditya Gopalan (Indian Insitute of Science)
+- Himanshu Tyagi (Indian Insitute of Science)
