@@ -1,12 +1,13 @@
 # CovidSim: An agent based simulator for COVID-19 testing and policy interventions
 
-This library provides an agent based simulation for COVID-19 evolution in a city. The city is divided into various localities
-and agents are distributed across localities in proportion to population densities. Each agent has a COVID state which evolves according to an SEIR model. There is also another Flu state corresponding to a flu with similar symptoms as COVID-19 which evolves according to an SI model. In addition, agents interact with other agents in their neighborhood and across localities. When an agent in COVID state S meets another agent in  COVID state I, its COVID state updates to I with some probability, thereby infecting the former agent. In the current version, the interaction across localities is based a single OD matrix for traffic flow across the city. 
+This library for Python 3 provides an agent based simulation for COVID-19 evolution in a city. The city is divided into various localities
+and agents are distributed across localities in proportion to population densities. Each agent has a COVID state which evolves according to an SEIR model. There is also another Flu state corresponding to a flu with similar symptoms as COVID-19 which evolves according to an SI model. In addition, agents interact with other agents in their neighbourhood and across localities. When an agent in COVID state S meets another agent in  COVID state I, its COVID state updates to I with some probability, thereby infecting the former agent. In the current version, the interaction across localities is based a single OD matrix for traffic flow across the city. 
 
-Along with state evolution for the health of the population, this simulator integrates testing policies (such as contact tracing) as well as policy interventions (such as Lockdown). A testing policy chooses which agent to test. It can use obserable features such as if an agent is symptomatic or not, but, obviously, cannot rely on the COVID state of an agent. An intervention policy can rely on the entire testing history. 
+Along with state evolution for the health of the population, this simulator integrates testing policies (such as contact tracing) as well as policy interventions (such as Lockdown). A testing policy chooses which agent to test. It can use observable features such as if an agent is symptomatic or not, but, obviously, cannot rely on the COVID state of an agent. An intervention policy can rely on the entire testing history. 
 
 **Dependencies**
 
+- Python 3
 - geopandas 
 - pandas 
 - scipy 
@@ -25,13 +26,13 @@ Along with state evolution for the health of the population, this simulator inte
 
 2. tests.py: This module contains functions that enable testing and the testing policies that we have implemented.
 
-3. interventions.py: This module containts functions enabling interventions and the intervention policies that we have implemented.
+3. interventions.py: This module contains functions enabling interventions and the intervention policies that we have implemented.
 
 **How do we store the state of the city**
 
-1. CP: This pandas frame maintains the entire state of the city, including health of each agent and its permanent list of contacts. It can be accessed by tests as well as intervention policies. 
+1. CP (short for City Population): This pandas dataframe maintains the entire state of the city, including health of each agent and its permanent list of contacts. It can be accessed by tests as well as intervention policies. A row of CP is an agent and a column is an attribute, e.g., "id". 
 
-2. TestingHistory: This is a numpy array which maintain the test status each agent on each day. Agents that test positive are marked +1 and those that test negative are marked -1. 
+2. TestingHistory: This is a numpy array which maintain the test status of each agent (row) on each day (column). Agents that test positive on a day are marked +1, those that test negative are marked -1, and those that are not tested are marked 0.
 
 3. InterventionHistory: This is a list which contains all the interventions applied till date.
 
@@ -62,7 +63,7 @@ Execute the file exampleRST-Quarantine.py, which runs a simulation for 100 days 
 
 While the simulator has been designed for general purpose use, in its current form it is tied closely to our own data. If you would like to modify our code to handle your own data, note the following points.
 
-1. The Initialize() function inside evolutions.py is custom made for city.geojson. You need to replace this function with your own version and output CP with the same column names. 
+1. The Initialize() function inside evolution.py is custom made for city.geojson. You should replace this function with your own version and output CP with the same column names. 
 
 2. Testing policies are not allowed to use COVID state and Flu state, but we have made these states available to testing policies through CP. Care must be taken to not use this information -- only observable one can use is if an agent is infected with COVID or Flu. In a later version, we will limit the information available to testing policies to only the observables.
 
@@ -70,7 +71,7 @@ While the simulator has been designed for general purpose use, in its current fo
 
 **!!A caution!!**
 
-***Changing the number of cores used by pool will change the dynamics of the simulation itself and will give very different results. For fair comparison, maintain the number of cores across all your simulation.***
+***Changing the number of cores used by multiprocessing.pool() in the simulate() function will change the dynamics of the simulation itself and will give very different results. For fair comparison, fix the number of cores across all your simulation runs.***
 
 
 That's all you need. ENJOY!
@@ -79,5 +80,5 @@ Ah, one more thing. If you have queries, feel free to **contact us** at {aditya,
 
 **Contributors** 
 
-- Aditya Gopalan (Indian Insitute of Science)
-- Himanshu Tyagi (Indian Insitute of Science)
+- Aditya Gopalan (Indian Institute of Science)
+- Himanshu Tyagi (Indian Institute of Science)
