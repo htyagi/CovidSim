@@ -76,9 +76,14 @@ While the simulator has been designed for general purpose use, in its current fo
 
 That's all you need. ENJOY!
 
-Ah, one more thing. If you have queries, feel free to **contact us** at {aditya,htyagi}@iisc.ac.in.
+Ah, one more thing. If you have queries, feel free to **contact us** at {aditya,htyagi}@iisc.ac.in
 
 **Contributors** 
 
 - Aditya Gopalan (Indian Institute of Science)
 - Himanshu Tyagi (Indian Institute of Science)
+
+**Citing this work**
+This work may be cited through its accompanying report:
+
+Gopalan, Aditya, & Tyagi, Himanshu (2020). How Reliable are Test Numbers for Revealing the COVID-19 Ground Truth and Applying Interventions? ArXiv, abs/2004.12782, URL: https://arxiv.org/abs/2004.12782 

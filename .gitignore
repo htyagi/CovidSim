@@ -133,3 +133,4 @@ dmypy.json
 *.png
 *.pickle
 *~
+.DS_Store
